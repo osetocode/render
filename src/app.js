@@ -3,6 +3,10 @@ import pool from './supabase.js'
 
 import listsApi from './router/lists.api.routes.js'
 import notesApi from './router/notes.api.routes.js'
+import pages from './router/pages.routes.js'
+import wake from './router/wake.routes.js'
+
+import { keepAliveServer } from './utils/wakeUp.js'
 
 import { PORT } from './config.js'
 
@@ -14,15 +18,23 @@ app.use(express.json())
 
 // ROUTES ===============================================
 
-app.use(listsApi)
-app.use(notesApi)
+// apis
+app.use('/api', listsApi)
+app.use('/api', notesApi)
 
-app.use('/', (req,res) => {
-  res.send('<h1>Bienvenidos al Cielo Hijos de Puta</h1>')
+// paginas
+app.use('/', pages)
+app.use('/', wake)
+
+// 404
+app.use('/', (req, res) => {
+  res.send('<Ruta no encontrada')
 })
 
 // INICIO DE APLICACIÓN =================================
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
   console.log('Server on port: ', PORT)
 })
+
+keepAliveServer()
