@@ -7,7 +7,7 @@ import { DOMAIN } from '../config.js'
 
 // AUXILIARES ALIVE ============================
 const alive = true
-const intervalMinutes = 120 * 1000
+const intervalMinutes = 10 * 60 * 1000
 
 const sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms))

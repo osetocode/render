@@ -1,4 +1,5 @@
 import express, { json } from 'express'
+import cors from 'cors'
 import pool from './supabase.js'
 
 import listsApi from './router/lists.api.routes.js'
@@ -15,6 +16,7 @@ import { PORT } from './config.js'
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 // ROUTES ===============================================
 
