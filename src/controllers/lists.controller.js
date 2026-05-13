@@ -67,12 +67,15 @@ export const putList = async(req,res)=>{
   }
 
   const { data, error } = await pool
-    .from('notes')
+    .from('lists')
     .update({ title })
     .eq('id', id)
     .select()
 
-  if (error) return res.sendStatus(500)
+  if (error){
+    console.error(error)
+    return res.sendStatus(500)
+  } 
 
   if (data.length == 0) return res.status(404).json({ message: 'El recurso no existe, o no se modificó ningún campo disponible' })
 

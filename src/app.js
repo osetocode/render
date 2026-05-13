@@ -30,7 +30,7 @@ app.use('/', wake)
 
 // 404
 app.use('/', (req, res) => {
-  res.send('<Ruta no encontrada')
+  res.send('Ruta no encontrada')
 })
 
 // INICIO DE APLICACIÓN =================================
