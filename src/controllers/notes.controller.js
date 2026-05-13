@@ -70,7 +70,7 @@ export const putNote = async (req,res)=>{
 
   const { data, error } = await pool
     .from('notes')
-    .update({ content, id_list })
+    .update({ content, id_list})
     .eq('id', id)
     .select()
 
