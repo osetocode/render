@@ -9,7 +9,7 @@ import wake from './router/wake.routes.js'
 
 import { keepAliveServer } from './utils/wakeUp.js'
 
-import { PORT } from './config.js'
+import { PORT , ENVIRONMENT} from './config.js'
 
 // SET ==================================================
 
@@ -35,8 +35,20 @@ app.use('/', (req, res) => {
 
 // INICIO DE APLICACIÓN =================================
 
-app.listen(PORT, () => {
-  console.log('Server on port: ', PORT)
-})
+if(ENVIRONMENT == 'dev'){
+  app.listen(PORT, '0.0.0.0',() => {
+    console.log('Server on port: ', PORT,)
+    console.log("tambien accesible de manera local")
+  })
+}else{
+  app.listen(PORT, () => {
+    console.log('Server on port: ', PORT)
+  })
+}
+
+// Para ver en el móvil usar esta ruta:
+// Abrir el cmd: ipconfig => luego buscar la ipconfig el valor de la clave: Dirección IPv4:
+// Luego buscar en el móvil 192.168.1.59:3000 (donde la ip es el IPv4, y el último número es el número de puerto)
+
 
 keepAliveServer()

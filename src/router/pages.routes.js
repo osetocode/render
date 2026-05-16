@@ -7,15 +7,12 @@ const router = Router()
 // sitios estaticos
 router.use(express.static(path.join(root,'static')))
 
-// pagina principal
-router.get('/',(req,res)=>{
-  res.sendFile(path.join(root,'pages','index.html'))
-})
-
 // paginas
-router.get('/dashboard',(req,res)=>{
-  res.sendFile(path.join(root,'pages','panelAdmin.html'))
-})
+
+
+
+
+
 
 const xd = {
   "getN": "https://oseto.onrender.com/api/notes",
