@@ -17,15 +17,9 @@ const sleep = (ms) => {
 
 export const wakeServer = async()=> {
   const res = await fetch(DOMAIN)
-
-  if (res.ok) {
-    console.log('se prendioel servidor', new Date)
-  } else {
-    console.log('Hubo un pequeño problema')
-  }
-  
 }
 
+// esta función mantiene prendido el servidor accediendo al él en intervalos de tiempo
 export const keepAliveServer = async()=>{
   
   if(alive){
