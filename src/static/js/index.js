@@ -1,14 +1,22 @@
+import { toast } from "./toast.js"
+
+const btn = document.getElementById('btnCopyLinks')
+
 const link = 'https://oseto.onrender.com/links'
 
 // LISTENERS
 
-const btn = document.getElementById('btnCopyLinks')
-btn.addEventListener('click', () => {
-  copyMamada(link)
-})
+btn.addEventListener('click', () => copyText(link))
 
-async function copyMamada(text) {
-  await navigator.clipboard.writeText(text)
-  // esto eventualmente hay que cambiarlo por un toast o algo así
-  alert('Texto Copiado')
+// FUNCIONES EXTRA
+
+function copyText(text, message = 'Texto copiado en el portapeles') {
+  
+  try{
+    navigator.clipboard.writeText(text)
+  }catch(error){
+    console.error(error)
+  }
+  toast(undefined, message)
+
 }

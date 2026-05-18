@@ -9,11 +9,6 @@ router.use(express.static(path.join(root,'static')))
 
 // paginas
 
-
-
-
-
-
 const xd = {
   "getN": "https://oseto.onrender.com/api/notes",
   "postN": "https://oseto.onrender.com/api/note",
