@@ -9,7 +9,7 @@ router.use(express.static(path.join(root,'static')))
 
 // paginas
 
-const xd = {
+const linksDirectory = {
   "getN": "https://oseto.onrender.com/api/notes",
   "postN": "https://oseto.onrender.com/api/note",
   "putN": "https://oseto.onrender.com/api/note/",
@@ -21,7 +21,7 @@ const xd = {
 }
 
 router.get('/links',(req,res)=>{
-  res.json(xd)
+  res.json(linksDirectory)
 })
 
 

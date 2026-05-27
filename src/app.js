@@ -4,6 +4,7 @@ import cors from 'cors'
 import pool from './supabase.js'
 import listsApi from './router/lists.api.routes.js'
 import notesApi from './router/notes.api.routes.js'
+import activitiesApi from './router/activities.api.routes.js'
 import pages from './router/pages.routes.js'
 
 import { keepAliveServer } from './utils/wakeUp.js'
@@ -22,13 +23,14 @@ app.use(cors())
 // apis
 app.use('/api', listsApi)
 app.use('/api', notesApi)
+app.use('/api', activitiesApi)
 
 // paginas
 app.use('/', pages)
 
 // 404
 app.use('/', (req, res) => {
-  res.send('Ruta no encontrada')
+  res.status(400).send('Ruta no encontrada')
 })
 
 // INICIO DE APLICACIÓN =================================

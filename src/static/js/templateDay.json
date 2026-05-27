@@ -1,0 +1,40 @@
+[
+  {
+    "type": "boolean",
+    "name": "ordernar habitación",
+    "content": null
+  },
+  {
+    "type": "boolean",
+    "name": "alimentar gatos",
+    "content": null
+  },
+  {
+    "type": "text",
+    "name": "act. física / ejercicio",
+    "content": null
+  },
+  {
+    "type": "text",
+    "name": "laburar/producir",
+    "content": null
+  },
+  {
+    "type": "text",
+    "name": "leer / escribir",
+    "content": null
+  },
+  {
+    "type": "text",
+    "name": "programar / estudiar",
+    "content": null
+  },
+  {
+    "type": "notes",
+    "content": []
+  },
+  {
+    "type": "day",
+    "content": null
+  }
+]

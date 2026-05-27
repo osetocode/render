@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root{
-  
-}
-
 /* ESTILOS GENERALES ========================================= */
 
 *{
@@ -35,6 +31,10 @@ button{
   margin: auto;
 }
 
+a{
+  text-decoration: none;
+}
+
 /* NAV ========================================= */
 
 nav{
@@ -58,7 +58,10 @@ main .container{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 15px auto;
 }
+
+
 /* FOOTER ========================================= */
 
 footer{
@@ -66,6 +69,26 @@ footer{
   text-align: center;
   color: white;
   background-color: black;
+}
+
+/* =================================== ESTILOS DE ELEMENTOS EXTRA =================================== */
+
+/* BLOCK =================== */
+
+.block{
+  background-color: rgb(232, 232, 232);
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  padding: 15px 0;
+}
+
+.block:nth-of-type(odd) {
+  background-color: rgb(201, 201, 201);
+}
+
+.block h2{
+  margin-top: 0;
 }
 
 /* TOAST =================== */
