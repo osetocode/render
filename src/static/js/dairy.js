@@ -4,7 +4,7 @@
 // - manejar la lógica del día (que reset() use una función para detectar el día y renovarlo, también poder modificarlo a mano)
 // - incluir comidas del día
 // - incluir notas diarias
-// - incluir actividades extraÑ
+// - incluir actividades extra
 
 // =========== ELEMENTOS HTML Y VARIABLES GLOBALES
 let dataState
