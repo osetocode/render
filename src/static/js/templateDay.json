@@ -1,13 +1,43 @@
 [
   {
     "type": "boolean",
-    "name": "ordernar habitación",
-    "content": null
+    "name": "Ordernar habitación",
+    "status": "null"
   },
   {
     "type": "boolean",
-    "name": "alimentar gatos",
-    "content": null
+    "name": "Ordernar Abajo",
+    "status": "null"
+  },
+  {
+    "type": "boolean",
+    "name": "Gatos: comida - agua - kk",
+    "status": "null"
+  },
+  {
+    "type": "boolean",
+    "name": "Bañarse",
+    "status": "null"
+  },
+  {
+    "type": "boolean",
+    "name": "Tiña / Día",
+    "status": "null"
+  },
+  {
+    "type": "boolean",
+    "name": "Tiña / Noche",
+    "status": "null"
+  },
+  {
+    "type": "boolean",
+    "name": "Crema pies",
+    "status": "null"
+  },
+  {
+    "type": "boolean",
+    "name": "Uña Dedo Unu",
+    "status": "null"
   },
   {
     "type": "text",

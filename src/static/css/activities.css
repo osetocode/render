@@ -1,0 +1,67 @@
+.activities-container{
+  width: 100%;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.activitie{
+  border: 2px solid gray;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  border-radius: 14px;
+  background-color: #ddd;
+}
+
+.activitie--null{
+  background-color: #ddd;
+  border-color: gray;
+}
+
+.activitie--done{
+  background-color: #80c39a;
+  border-color: green;
+}
+
+.activitie--pending{
+  background-color: #f19a95;
+  border-color: crimson;
+}
+
+/*  */
+
+.activitie__buttons{
+  display: flex;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.activitie__button{
+  background-color: blue;
+  margin-right: 10px;
+  margin-left: 0;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activitie__button i{
+  pointer-events: none;
+  font-size: large;
+  margin: auto;
+}
+
+.activitie__button--null{
+  background-color: gray;
+}
+
+.activitie__button--done{
+  background-color: green;
+}
+
+.activitie__button--pending{
+  background-color: crimson;
+}
+
