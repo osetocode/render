@@ -57,11 +57,10 @@
   background-color: gray;
 }
 
-.activitie__button--done{
+.activitie__button--done , .activitie__button--edit{
   background-color: green;
 }
 
 .activitie__button--pending{
   background-color: crimson;
 }
-

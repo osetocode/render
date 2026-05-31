@@ -41,23 +41,27 @@
   },
   {
     "type": "text",
-    "name": "act. física / ejercicio",
-    "content": null
+    "name": "Act. física / Ejercicio",
+    "content": null,
+    "status": "null"
   },
   {
     "type": "text",
-    "name": "laburar/producir",
-    "content": null
+    "name": "Laburar/Producir",
+    "content": null,
+    "status": "null"
   },
   {
     "type": "text",
-    "name": "leer / escribir",
-    "content": null
+    "name": "Leer / Escribir",
+    "content": null,
+    "status": "null"
   },
   {
     "type": "text",
-    "name": "programar / estudiar",
-    "content": null
+    "name": "Programar / Estudiar",
+    "content": null,
+    "status": "null"
   },
   {
     "type": "notes",
