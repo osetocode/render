@@ -9,42 +9,33 @@
 </head>
 <body>
   <main>
-    <h1></h1>
-    <input type="date">
-    <button>confirm</button>
+
+    <button>Haz click</button>
+
+    <!-- <div class="modal">
+      <label for="">Edit:</label>
+      <input type="text">
+      <button>Enviar</button>
+      <button>Cancelar</button>
+    </div> -->
 
   </main>
 
-
-
   <script type="module">
-    import {modalConfirm} from './js/modal.js'
+    import {modalConfirm , inputModal} from './js/modal.js'
     import {toast} from './js/toast.js'
-    import {generateDate} from './js/dateTool.js'
 
     const button = document.querySelector('button')
-    const inputDate = document.querySelector('input')
-    const h1 = document.querySelector('h1')
 
-    inputDate.value = '2026-05-31'
+    button.addEventListener('click',async ()=>{
 
-    button.addEventListener('click',()=>{
-      if(!inputDate.value) return
+      const res = await inputModal()
 
-      const date = new Date
+      if(res === null) return console.log('devolvio null')
 
-      console.log(date)
-
-      // const newDate = generateDate(inputDate.value)
-      // newDate.printDay()
-      // console.log(newDate.printFullDay())
-      // console.log('day',newDate.weekDay)
-      // console.log('mont',newDate.month)
-      // console.log('year',newDate.year)
+      console.log(res)
 
     })
-
-    
 
 
   </script>

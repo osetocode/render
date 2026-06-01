@@ -1,14 +1,12 @@
 // PENDIENTES
 
-// - poder sobreescribir la info de las actividades de tipo text (prioridad alta)
-// - incluir comidas del día (prioridad media/alta)
 // - incluir actividades extra (prioriad media)
 // - incluir notas diarias (prioriad media/baja)
 // - añadir al reset la hora de iniciado al dia (prioridad baja)
 
 import { toast } from './toast.js'
-import { modalConfirm } from './modal.js'
-import { getFullNameDate , getActualDate} from './dateTool.js'
+import { modalConfirm, inputModal } from './modal.js'
+import { getFullNameDate, getActualDate } from './dateTool.js'
 
 // =========== ELEMENTOS HTML Y VARIABLES GLOBALES
 
@@ -50,11 +48,24 @@ activities.addEventListener('click', (e) => {
   // en este último caso deberíamos abrir un modal, extrayendo el id del pather,
   // si tiene contenido le damos la clase done, si no tiene, le damos la clase null
   // para ello primero trabajaremos en el modulo modal: edit input (retorna una promesa)
-  if (target.classList.contains('activitie__button--edit')) setActivitieClass('done')
+  if (target.classList.contains('activitie__button--edit')) editTypeText(target)
 
   function setActivitieClass(newClassName) {
     pather.className = `activitie activitie--${newClassName}`
     dataState[id].status = newClassName
+
+    // solo aplica para los que tienen la propiedad content
+    if(dataState[id].type == 'text'){
+
+      // de momento los que tienen content no se les renderiza el boton done pero igual pongo este if
+      if (newClassName != 'done'){
+        dataState[id].content = null
+        const content = pather.querySelector('.content')
+        content.textContent = ''      
+      }
+    }
+
+    // para los de tipo text habría que tambien quitarles el contenido y ponerles status null
   }
 
   try {
@@ -71,7 +82,7 @@ btnPrintDatastate.addEventListener('click', printDataState)
 
 btnFinishDay.addEventListener('click', finishDay)
 
-inputDate.addEventListener('change',(e)=>{
+inputDate.addEventListener('change', (e) => {
 
   const dayState = dataState.find(item => item.type === 'day')
   dayState.date = e.target.value
@@ -82,7 +93,32 @@ inputDate.addEventListener('change',(e)=>{
 
 // =========== FUNCIONES DE APOYO ====================
 
-function printDateinputFormat(date){
+async function editTypeText(target) {
+
+  // guardamos el indice del array
+  const id = target.closest('.activitie').dataset.id
+  const task = dataState[id]
+
+  // debemos acceder a su propiedad content ( lo buscamos con la id)
+  const res = await inputModal(task.content)
+
+  if (res === null) return
+
+  if (res == ''){
+    task.status = null
+  }else{
+    task.status = 'done'
+  }
+
+  task.content = res
+
+  // solo deberíamos renderizar o mas bien modificar el valor interno de la actividad en si, no todo
+
+  putActivities(dataState)
+  renderAll(dataState)
+}
+
+function printDateinputFormat(date) {
   dateFull.textContent = getFullNameDate(date)
 }
 
@@ -120,25 +156,25 @@ async function reset() {
 
   // CONFIRMAMOS LA ACCIÓN CON UN MODAL
   const ok = await modalConfirm('¿Quires restablecer la lista?')
-  if(!ok) return
+  if (!ok) return
 
   // OBTENEMOS LA PLANTILLA Y LE ASIGNAMOS LA FECHA ACTUAL
   const data = await getTemplateDay()
-  
+
   const dayState = data.find(item => item.type === 'day')
   dayState.date = getActualDate()
-  
+
   // HACEMOS PUT DE LA PLANTILLA CON LA FECHA ACTUAL
   const resOk = await putActivities(data)
 
-  if(resOk){
+  if (resOk) {
     dataState = data
     renderAll()
-  }else{
+  } else {
     console.error('Fallo la petición putActivities')
     toast('Hubo un fallo en la aplicación')
   }
-  
+
 }
 
 // =========== FUNCIONES DE RENDERIZADO ==================
@@ -147,12 +183,12 @@ function renderAll() {
 
   if (!dataState) return toast(undefined, 'hubo un error inesperado')
 
-  console.log('renderizando...')
+  console.log('renderizando TODO ...')
   // pintamos las tareas
   paintData(dataState)
   // pintamos las fechas
   const dayState = dataState.find(item => item.type === 'day')
-  if(dayState.date) printDateinputFormat(dayState.date)
+  if (dayState.date) printDateinputFormat(dayState.date)
 
 }
 
@@ -182,7 +218,10 @@ function newActivitie(index, element) {
   newTask.dataset.id = index
 
   newTask.innerHTML = `
-    <p>${name}</p>
+    <div>
+      <p>${name}<p class="content"></p></p>
+    </div>
+
     <div class="activitie__buttons">
       <button class="activitie__button activitie__button--${icons[type].button}">
         <i class="bi ${icons[type].icon}"></i>
@@ -195,6 +234,17 @@ function newActivitie(index, element) {
       </button>
     </div>
   `
+
+  if (type ==='text'){
+    const p = newTask.querySelector('p')
+    const pContent = newTask.querySelector('p.content')
+
+    p.textContent += ' :'
+    pContent.textContent = element.content
+    
+  } 
+
+
   return newTask
 }
 

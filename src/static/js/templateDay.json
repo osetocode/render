@@ -41,13 +41,31 @@
   },
   {
     "type": "text",
+    "name": "Desayuno",
+    "content": null,
+    "status": "null"
+  },
+  {
+    "type": "text",
+    "name": "Almuerzo",
+    "content": null,
+    "status": "null"
+  },
+  {
+    "type": "text",
+    "name": "Cena",
+    "content": null,
+    "status": "null"
+  },
+  {
+    "type": "text",
     "name": "Act. física / Ejercicio",
     "content": null,
     "status": "null"
   },
   {
     "type": "text",
-    "name": "Laburar/Producir",
+    "name": "Laburar / Producir",
     "content": null,
     "status": "null"
   },
