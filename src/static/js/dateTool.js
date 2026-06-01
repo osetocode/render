@@ -42,3 +42,30 @@ export function getActualDate(){
 
   return result
 }
+
+export function formatTime(time){
+  // Parametro esperado en formato : '15:45' << Ejemplo 
+  if (!time) {
+    console.log('No paso el parámetro, formato de parametro: "18:35"')
+    return
+  }
+
+  let extra = 'a'
+  let [hour,minut] = time.split(':').map(Number)
+
+  if(String(minut).length == 1) minut = '0' + minut
+  
+  if(hour >= 12){
+
+    if(hour !== 12){
+      hour += -12
+    } 
+    extra = 'p'
+  }
+
+  const format = `${hour}:${minut} ${extra}.m`
+
+  return format 
+
+
+}

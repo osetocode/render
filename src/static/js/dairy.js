@@ -6,7 +6,7 @@
 
 import { toast } from './toast.js'
 import { modalConfirm, inputModal } from './modal.js'
-import { getFullNameDate, getActualDate } from './dateTool.js'
+import { getFullNameDate, getActualDate , formatTime } from './dateTool.js'
 
 // =========== ELEMENTOS HTML Y VARIABLES GLOBALES
 
@@ -28,8 +28,10 @@ const btnPrintDatastate = document.getElementById('printDataState')
 const btnFinishDay = document.getElementById('finishDay')
 const activities = document.querySelector('.activities-container')
 const dateFull = document.querySelector('.dateFull')
+const timeFull = document.querySelector('.timeFull')
 
 const inputDate = document.querySelector('input[type="date"]')
+const inputTime = document.querySelector('input[type="time"]')
 
 // =========== LISTENERS =================================
 
@@ -91,6 +93,17 @@ inputDate.addEventListener('change', (e) => {
   putActivities(dataState)
 })
 
+inputTime.addEventListener('change',(e)=>{
+
+  const time = e.target.value 
+
+  const dayState = dataState.find(item => item.type === 'day')
+  dayState.time = time
+
+  printTimeinputFormat(time)
+  putActivities(dataState)
+})
+
 // =========== FUNCIONES DE APOYO ====================
 
 async function editTypeText(target) {
@@ -122,6 +135,10 @@ function printDateinputFormat(date) {
   dateFull.textContent = getFullNameDate(date)
 }
 
+function printTimeinputFormat(time){
+  timeFull.textContent = formatTime(time)
+}
+
 function printDataState() {
   console.log('imprimiendo data state')
   console.log(dataState)
@@ -144,6 +161,13 @@ async function finishDay() {
   }
 
 }
+
+function el(tag, styles, content) {
+  const element = document.createElement(tag)
+  if (styles) element.className = styles
+  if (content) element.textContent = content
+  return element
+}
 // =========== FUNCIONES =================================
 
 async function init() {
@@ -163,6 +187,7 @@ async function reset() {
 
   const dayState = data.find(item => item.type === 'day')
   dayState.date = getActualDate()
+  dayState.time = null
 
   // HACEMOS PUT DE LA PLANTILLA CON LA FECHA ACTUAL
   const resOk = await putActivities(data)
@@ -186,9 +211,10 @@ function renderAll() {
   console.log('renderizando TODO ...')
   // pintamos las tareas
   paintData(dataState)
-  // pintamos las fechas
+  // pintamos la FECHA y hora
   const dayState = dataState.find(item => item.type === 'day')
   if (dayState.date) printDateinputFormat(dayState.date)
+  if (dayState.time) printTimeinputFormat(dayState.time)
 
 }
 
@@ -218,8 +244,8 @@ function newActivitie(index, element) {
   newTask.dataset.id = index
 
   newTask.innerHTML = `
-    <div>
-      <p>${name}<p class="content"></p></p>
+    <div class="activitie__info">
+      <p class="activitie__name">${name}</p>
     </div>
 
     <div class="activitie__buttons">
@@ -236,14 +262,15 @@ function newActivitie(index, element) {
   `
 
   if (type ==='text'){
-    const p = newTask.querySelector('p')
-    const pContent = newTask.querySelector('p.content')
-
-    p.textContent += ' :'
-    pContent.textContent = element.content
+    const activitieInfo = newTask.querySelector('.activitie__info')
+    const activitieName = newTask.querySelector('.activitie__name')
     
-  } 
+    const pContent = el('p', 'content', element.content)
+    
+    activitieName.textContent += ' :'
+    activitieInfo.appendChild(pContent)
 
+  } 
 
   return newTask
 }
