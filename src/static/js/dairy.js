@@ -1,16 +1,17 @@
 // PENDIENTES
 
-// - crear botón finish day (para que marque como rojo todo lo que no se cumplió en el día)
-// - manejar la lógica del día (que reset() use una función para detectar el día y renovarlo, también poder modificarlo a mano)
-// - incluir comidas del día
-// - incluir notas diarias
-// - incluir actividades extra
-// - tal vez añadir a que hora empezó mi día, tal vez ponerle a las actividades la hora en que fue concebida la acción, tal vez poder editar tambien eso manualmente
+// - poder sobreescribir la info de las actividades de tipo text (prioridad alta)
+// - incluir comidas del día (prioridad media/alta)
+// - incluir actividades extra (prioriad media)
+// - incluir notas diarias (prioriad media/baja)
+// - añadir al reset la hora de iniciado al dia (prioridad baja)
 
 import { toast } from './toast.js'
 import { modalConfirm } from './modal.js'
+import { getFullNameDate , getActualDate} from './dateTool.js'
 
 // =========== ELEMENTOS HTML Y VARIABLES GLOBALES
+
 const icons = {
   "boolean": {
     "icon": "bi-check",
@@ -28,6 +29,9 @@ const btnResetDay = document.getElementById('resetDay')
 const btnPrintDatastate = document.getElementById('printDataState')
 const btnFinishDay = document.getElementById('finishDay')
 const activities = document.querySelector('.activities-container')
+const dateFull = document.querySelector('.dateFull')
+
+const inputDate = document.querySelector('input[type="date"]')
 
 // =========== LISTENERS =================================
 
@@ -43,7 +47,9 @@ activities.addEventListener('click', (e) => {
   if (target.classList.contains('activitie__button--null')) setActivitieClass('null')
   if (target.classList.contains('activitie__button--done')) setActivitieClass('done')
   if (target.classList.contains('activitie__button--pending')) setActivitieClass('pending')
-  // en este último caso deberíamos abrir un modal, extrayendo el id del pather, si tiene contenido le damos la clase done, si no tiene, le damos la clase null
+  // en este último caso deberíamos abrir un modal, extrayendo el id del pather,
+  // si tiene contenido le damos la clase done, si no tiene, le damos la clase null
+  // para ello primero trabajaremos en el modulo modal: edit input (retorna una promesa)
   if (target.classList.contains('activitie__button--edit')) setActivitieClass('done')
 
   function setActivitieClass(newClassName) {
@@ -65,7 +71,20 @@ btnPrintDatastate.addEventListener('click', printDataState)
 
 btnFinishDay.addEventListener('click', finishDay)
 
-// =========== FUNCIONES PROVISIONALES ====================
+inputDate.addEventListener('change',(e)=>{
+
+  const dayState = dataState.find(item => item.type === 'day')
+  dayState.date = e.target.value
+
+  printDateinputFormat(e.target.value)
+  putActivities(dataState)
+})
+
+// =========== FUNCIONES DE APOYO ====================
+
+function printDateinputFormat(date){
+  dateFull.textContent = getFullNameDate(date)
+}
 
 function printDataState() {
   console.log('imprimiendo data state')
@@ -99,18 +118,25 @@ async function init() {
 
 async function reset() {
 
+  // CONFIRMAMOS LA ACCIÓN CON UN MODAL
   const ok = await modalConfirm('¿Quires restablecer la lista?')
-
   if(!ok) return
 
+  // OBTENEMOS LA PLANTILLA Y LE ASIGNAMOS LA FECHA ACTUAL
   const data = await getTemplateDay()
+  
+  const dayState = data.find(item => item.type === 'day')
+  dayState.date = getActualDate()
+  
+  // HACEMOS PUT DE LA PLANTILLA CON LA FECHA ACTUAL
   const resOk = await putActivities(data)
 
   if(resOk){
     dataState = data
     renderAll()
   }else{
-    console.log('Hubo una falla en la petición del input')
+    console.error('Fallo la petición putActivities')
+    toast('Hubo un fallo en la aplicación')
   }
   
 }
@@ -122,7 +148,12 @@ function renderAll() {
   if (!dataState) return toast(undefined, 'hubo un error inesperado')
 
   console.log('renderizando...')
+  // pintamos las tareas
   paintData(dataState)
+  // pintamos las fechas
+  const dayState = dataState.find(item => item.type === 'day')
+  if(dayState.date) printDateinputFormat(dayState.date)
+
 }
 
 function paintData(data) {

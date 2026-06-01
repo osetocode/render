@@ -1,3 +1,10 @@
+/*  */
+
+.date-container{
+  margin-bottom: 10px;
+}
+
+/*  */
 .activities-container{
   width: 100%;
   gap: 10px;
@@ -64,3 +71,4 @@
 .activitie__button--pending{
   background-color: crimson;
 }
+

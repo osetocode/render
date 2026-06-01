@@ -69,6 +69,7 @@
   },
   {
     "type": "day",
-    "content": null
+    "date": null,
+    "hour" : null
   }
 ]
