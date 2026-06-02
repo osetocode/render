@@ -59,25 +59,31 @@
   },
   {
     "type": "text",
-    "name": "Act. física / Ejercicio",
-    "content": null,
-    "status": "null"
-  },
-  {
-    "type": "text",
     "name": "Laburar / Producir",
     "content": null,
     "status": "null"
   },
   {
     "type": "text",
-    "name": "Leer / Escribir",
+    "name": "Act. física / Ejercicio",
+    "content": null,
+    "status": "null"
+  },
+  {
+    "type": "text",
+    "name": "Música",
     "content": null,
     "status": "null"
   },
   {
     "type": "text",
     "name": "Programar / Estudiar",
+    "content": null,
+    "status": "null"
+  },
+  {
+    "type": "text",
+    "name": "Leer / Escribir",
     "content": null,
     "status": "null"
   },
