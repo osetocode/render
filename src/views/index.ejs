@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oseto</title>
-  <!-- LINK -->
+<%- include('partials/head-open', {title : "Oseto"}) %>
+  <!-- CSS: STYLES -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-  <nav>
-    <div class="container">
-  
-      <h1><a href="./">Oseto</a></h1>
-  
-    </div>
-  </nav>
+  <%- include('partials/nav') %>
 
   <main>
     <div class="container">
@@ -33,13 +23,13 @@
 
       <div class="block">
         <h2>Actividades</h2>
-        <a href="dairy-activities.html">Act. Diarias</a>
+        <a href="dairy-activities">Act. Diarias</a>
       </div>
 
       <div class="block">
         <h2>Tools</h2>
         <a href="https://osetocode.github.io/ToDoList/">Lista de tareas</a> <br>
-        <a href="links.html">Directorio de links</a>
+        <a href="links">Directorio de links</a>
       </div>
 
       <div class="block">
@@ -50,13 +40,7 @@
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-  
-      <p>Desarrollado por Oso Tripolar</p>
-  
-    </div>
-  </footer>
+  <%- include('partials/footer') %>
   
   <script src="js/index.js" type="module"></script>
 </body>

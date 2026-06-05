@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<%- include('partials/head-open', {title : "test" }) %>
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+  <%- include('partials/nav') %>
+
   <main>
 
     <button>Haz click</button>
 
-    <!-- <div class="modal">
-      <label for="">Edit:</label>
-      <input type="text">
-      <button>Enviar</button>
-      <button>Cancelar</button>
-    </div> -->
-
   </main>
+
+  <%- include('partials/footer')  %>
 
   <script type="module">
     import {modalConfirm , inputModal} from './js/modal.js'

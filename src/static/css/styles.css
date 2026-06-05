@@ -90,6 +90,9 @@ footer{
   border-radius: 15px;
   margin-bottom: 25px;
   padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .block:nth-of-type(odd) {
@@ -98,6 +101,10 @@ footer{
 
 .block h2{
   margin-top: 0;
+}
+
+.block p{
+  margin-top: 3px;
 }
 
 /* TOAST =================== */

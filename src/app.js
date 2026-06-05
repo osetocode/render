@@ -1,15 +1,19 @@
-import express, { json } from 'express'
+import path from 'node:path'
+
+import express from 'express'
 import cors from 'cors'
 
-import pool from './supabase.js'
+import { PORT , ENVIRONMENT , root} from './config.js'
+
+// routes:api
 import listsApi from './router/lists.api.routes.js'
 import notesApi from './router/notes.api.routes.js'
 import activitiesApi from './router/activities.api.routes.js'
+// routes:pages
 import pages from './router/pages.routes.js'
-
+import pagesEJS from './router/pagesEJS.routes.js'
+// extra functions
 import { keepAliveServer } from './utils/wakeUp.js'
-
-import { PORT , ENVIRONMENT} from './config.js'
 
 // SET ==================================================
 
@@ -17,6 +21,9 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
+
+app.set('view engine', 'ejs')
+app.set('views',path.join(root,'views'))
 
 // ROUTES ===============================================
 
@@ -26,12 +33,8 @@ app.use('/api', notesApi)
 app.use('/api', activitiesApi)
 
 // paginas
-app.use('/', pages)
-
-// 404
-app.use('/', (req, res) => {
-  res.status(400).send('Ruta no encontrada')
-})
+app.use('/', pagesEJS)
+app.use('/', pages) //siempre debe ir al último xq tiene el 404
 
 // INICIO DE APLICACIÓN =================================
 

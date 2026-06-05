@@ -24,5 +24,13 @@ router.get('/links',(req,res)=>{
   res.json(linksDirectory)
 })
 
+router.get('/favicon.ico',(req,res)=>{
+  res.sendFile(path.join(root, 'static', 'img','logo-isotipo-claro.svg'))
+})
+
+router.use('/', (req, res) => {
+  res.status(400).send('Ruta no encontrada')
+})
+
 
 export default router
