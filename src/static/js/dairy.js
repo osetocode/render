@@ -200,6 +200,11 @@ async function reset() {
     toast('Hubo un fallo en la aplicación')
   }
 
+  // SETEAMOS LOS INPUT
+  inputDate.value = ''
+  inputTime.value = ''
+  timeFull.textContent = ''
+
 }
 
 // =========== FUNCIONES DE RENDERIZADO ==================
