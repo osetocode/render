@@ -20,7 +20,7 @@ const linksDirectory = {
   "deleteL": "https://oseto.onrender.com/api/list/"
 }
 
-router.get('/links',(req,res)=>{
+router.get('/linksAPI',(req,res)=>{
   res.json(linksDirectory)
 })
 

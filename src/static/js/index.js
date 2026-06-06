@@ -2,7 +2,7 @@ import { toast } from "./toast.js"
 
 const btn = document.getElementById('btnCopyLinks')
 
-const link = 'https://oseto.onrender.com/links'
+const link = 'https://oseto.onrender.com/linksAPI'
 
 // LISTENERS
 
