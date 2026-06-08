@@ -1,5 +1,5 @@
 import express , { Router } from "express";
-import {root} from '../config.js'
+import {ROOT} from '../config.js'
 import path from 'path'
 
 const router = Router()
@@ -9,7 +9,7 @@ const router = Router()
 // PAGES ===========================
 
 // sitios estaticos
-router.use(express.static(path.join(root,'static')))
+router.use(express.static(path.join(ROOT,'static')))
 
 // paginas
 const linksDirectory = {
@@ -28,11 +28,11 @@ router.get('/linksAPI',(req,res)=>{
 })
 
 router.get('/favicon.ico',(req,res)=>{
-  res.sendFile(path.join(root, 'static', 'img','logo-isotipo-claro.svg'))
+  res.sendFile(path.join(ROOT, 'static', 'img','logo-isotipo-claro.svg'))
 })
 
 router.use('/', (req, res) => {
-  res.status(400).send('Ruta no encontrada')
+  res.status(400).render('404')
 })
 
 export default router

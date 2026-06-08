@@ -4,7 +4,7 @@ import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
-import { PORT , ENVIRONMENT , root} from './config.js'
+import { PORT , ENVIRONMENT , ROOT} from './config.js'
 
 // routes:api
 import listsApi from './router/lists.api.routes.js'
@@ -25,7 +25,7 @@ app.use(cors())
 app.use(cookieParser())
 
 app.set('view engine', 'ejs')
-app.set('views',path.join(root,'views'))
+app.set('views',path.join(ROOT,'views'))
 
 // ROUTES ===============================================
 

@@ -4,9 +4,10 @@
 // - incluir notas diarias (prioriad media/baja)
 // - añadir al reset la hora de iniciado al dia (prioridad baja)
 
-import { toast } from './toast.js'
-import { modalConfirm, inputModal } from './modal.js'
-import { getFullNameDate, getActualDate , formatTime } from './dateTool.js'
+import {} from './components/navbar.js'
+import { toast } from './components/toast.js'
+import { modalConfirm, inputModal } from './components/modal.js'
+import { getFullNameDate, getActualDate , formatTime } from './utils/dateTool.js'
 
 // =========== ELEMENTOS HTML Y VARIABLES GLOBALES
 

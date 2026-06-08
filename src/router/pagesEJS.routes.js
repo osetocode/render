@@ -1,7 +1,8 @@
 import path from 'node:path'
-import {root,USER_KEY_ADMIN} from '../config.js'
+import {USER_KEY_ADMIN} from '../config.js'
 
 import express , { Router } from "express";
+import { log } from 'node:console';
 
 const router = Router()
 
@@ -12,6 +13,19 @@ const isLogged = (req, res, next) => {
   req.logged = false
   const { acces_token } = req.cookies
   if (acces_token === 'logged') req.logged = true
+
+  next()
+}
+
+const isAuth = (req,res,next) =>{
+  req.logged = false
+  const { acces_token } = req.cookies
+  if (acces_token === 'logged'){
+    req.logged = true
+  } else{
+    return res.status(401).render('401')
+    // deberiamos realmente enviar una pagina con 401
+  }
 
   next()
 }
@@ -27,8 +41,8 @@ router.get('/',isLogged,(req,res)=>{
   }
 })
 
-router.get('/dairy-activities',(req,res)=>{
-  res.render('dairy-activities')
+router.get('/dairy-activities',isAuth,(req,res)=>{
+  res.render('dairy-activities',{logged: true})
 })
 
 router.get('/links',isLogged,(req,res)=>{

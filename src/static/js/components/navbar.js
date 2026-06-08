@@ -1,6 +1,7 @@
-import { inputModal } from '../modal.js'
+import { inputModal } from './modal.js'
 
 const nav = document.querySelector('nav')
+
 
 nav.addEventListener('click',async (e)=>{
   if (e.target.tagName !== 'BUTTON') return

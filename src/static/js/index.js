@@ -1,5 +1,5 @@
 import {} from "./components/navbar.js"
-import { toast } from "./toast.js"
+import { toast } from "./components/toast.js"
 
 const btn = document.getElementById('btnCopyLinks')
 
@@ -7,7 +7,9 @@ const link = 'https://oseto.onrender.com/linksAPI'
 
 // LISTENERS
 
-btn.addEventListener('click', () => copyText(link))
+if(btn){
+  btn.addEventListener('click', () => copyText(link))
+}
 
 // FUNCIONES EXTRA
 
