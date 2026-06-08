@@ -1,47 +1,67 @@
-<%- include('partials/head-open', {title : "Oseto"}) %>
+<%- include('partials/head-open', {title : "Oseto" }) %>
   <!-- CSS: STYLES -->
   <link rel="stylesheet" href="css/styles.css">
-</head>
+  <!-- CSS: ICONS - BS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  </head>
 
-<body>
+  <body>
 
-  <%- include('partials/nav') %>
+    <%- include('partials/nav') %>
 
-  <main>
-    <div class="container">
+      <main>
+        <div class="container">
 
-      <h1>Página Principal</h1>
-      
-      <p>Sitio Personal para subir proyectos, informacion variada, exponer trabajos, hacer pruebas, etc</p>
-      
-      <div class="block">
-        <h2>Listas Varias</h2>
-        <a href="https://osotripolar.github.io/experiments/dinamic-list/">Dinamic List</a>
-        <p>Botón para copiar el acceso a las api de esa página</p>
-        <button id="btnCopyLinks">Copiar Link </button>
-      </div>
+          <h1>Bienvenido</h1>
 
-      <div class="block">
-        <h2>Actividades</h2>
-        <a href="dairy-activities">Act. Diarias</a>
-      </div>
+          <p>Sitio Personal para subir proyectos, informacion variada, exponer trabajos, hacer pruebas, etc</p>
 
-      <div class="block">
-        <h2>Tools</h2>
-        <a href="https://osetocode.github.io/ToDoList/">Lista de tareas</a> <br>
-        <a href="links">Directorio de links</a>
-      </div>
+          <div class="block">
+            <h2>Herramientas</h2>
+            <a href="https://osotripolar.github.io/experiments/dinamic-list/">Dinamic List</a>
+            <p>Ejercicio de lista dinámica dónde puedes crear notas y clasificarlas por grupos</p>
 
-      <div class="block">
-        <h2>Otros Links</h2>
-        <a href="http://192.168.1.59:3000">Desarrollo Local</a>
-      </div>
+            <% if (typeof logged !=='undefined' ) { %>
+              <!-- ESTE CONTENIDO SOLO ESTÁ DISPONIBLE SI ESTÁS AUTORIZADO -->
+              <p>Botón para copiar el acceso a las api de esa página</p>
+              <button id="btnCopyLinks">Copiar Link </button>
+            <% }%>
 
-    </div>
-  </main>
+            <a href="https://osetocode.github.io/ToDoList/">Lista de tareas</a>
+            <p>Lista de tareas por chekclist, crea tareas y marcalas cuando estén listas</p>
+            
+          </div>
 
-  <%- include('partials/footer') %>
-  
-  <script src="js/index.js" type="module"></script>
-</body>
-</html>
+
+
+          <div class="block">
+            <h2>Otros</h2>
+
+            <a href="links">Directorio de links</a>
+            <p>Compilación de diversos links que te pueden servir</p>
+          </div>
+
+          <% if (typeof logged !=='undefined' ) { %>
+            <!-- ESTE CONTENIDO SOLO ESTÁ DISPONIBLE SI ESTÁS AUTORIZADO -->
+            <h2>Links personales</h2>
+
+            <div class="block">
+              <h2>Actividades</h2>
+              <a href="dairy-activities">Act. Diarias</a>
+            </div>
+
+            <div class="block">
+              <h2>Otros Links</h2>
+              <a href="http://192.168.1.59:3000">Desarrollo Local</a>
+            </div>
+            <% }%>
+
+        </div>
+      </main>
+
+      <%- include('partials/footer') %>
+
+        <script src="js/index.js" type="module"></script>
+  </body>
+
+  </html>

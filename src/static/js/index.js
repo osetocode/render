@@ -1,3 +1,4 @@
+import {} from "./components/navbar.js"
 import { toast } from "./toast.js"
 
 const btn = document.getElementById('btnCopyLinks')

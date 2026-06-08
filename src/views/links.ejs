@@ -1,43 +1,52 @@
-<%- include('partials/head-open', {title : "links"}) %>
+<%- include('partials/head-open', {title : "links" }) %>
+  <!-- CSS: STYLES -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- CSS: ICONS - BS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  </head>
 
-<!-- CSS: STYLES -->
-<link rel="stylesheet" href="css/styles.css">
-</head>
+  <body>
 
-<body>
+    <%- include('partials/nav') %>
+
+      <main>
+        <div class="container">
+
+          <h1>Links varios</h1>
+
+          <p>Listado diverso de links</p>
+
+          <div class="block">
+
+            <h2>Dominios</h2>
+
+            <a href="https://tld-list.com/es">Comparador de precios de dominios</a>
+            <p>Encuentra los mejores precios para registrar tu dominio</p>
+
+            <a href="https://punto.pe/">Tienda de dominios.pe</a>
+            <p>Página para adquirir dominios .pe</p>
+
+          </div>
+
+          <% if (typeof logged !=='undefined' ) { %>
+            <!-- ESTE CONTENIDO SOLO ESTÁ DISPONIBLE SI ESTÁS AUTORIZADO -->
+            <div class="block">
+              <h2>Referencias para MARSE</h2>
   
-  <%- include('partials/nav') %>
+              <a href="https://confeccionesreyes.com/">confeccionesreyes.com</a>
+              <p>web de confecciones bonita y funcional (aunque con mal rendimiento)</p>
+  
+            </div>
+          <% }%>
 
-  <main>
-    <div class="container">
 
-      <h1>Links varios</h1>
+        </div>
+      </main>
 
-      <p>Listado diverso de links</p>
+      <%- include('partials/footer') %>
 
-      <div class="block">
+        <script src="js/components/navbar.js" type="module"></script>
 
-        <h2>Dominios</h2>
+  </body>
 
-        <a href="https://tld-list.com/es">Comparador de precios de dominios</a>
-        <p>Encuentra los mejores precios para registrar tu dominio</p>
-
-        <a href="https://punto.pe/">Tienda de dominios.pe</a>
-        
-      </div>
-
-      <div class="block">
-        <h2>Referencias para MARSE</h2>    
-
-        <a href="https://confeccionesreyes.com/">confeccionesreyes.com</a>
-        <p>web de confecciones bonita y funcional (aunque con mal rendimiento)</p>
-
-      </div>
-        
-    </div>
-  </main>
-
-  <%- include('partials/footer') %>
-
-</body>
-</html>
+  </html>

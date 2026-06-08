@@ -5,30 +5,41 @@ import express , { Router } from "express";
 
 const router = Router()
 
+// MIDDLEWHERE ===========================
+
+const isLogged = (req, res, next) => {
+
+  req.logged = false
+  const { acces_token } = req.cookies
+  if (acces_token === 'logged') req.logged = true
+
+  next()
+}
+
 // paginas
 
-router.get('/',(req,res)=>{
-  res.render('index')
+router.get('/',isLogged,(req,res)=>{
+
+  if (req.logged) {
+    res.render('index', { logged: true })
+  } else {
+    res.render('index')
+  }
 })
 
 router.get('/dairy-activities',(req,res)=>{
   res.render('dairy-activities')
 })
 
-router.get('/links',(req,res)=>{
-  res.render('links')
+router.get('/links',isLogged,(req,res)=>{
+  if (req.logged) {
+    res.render('links', { logged: true })
+  } else {
+    res.render('links')
+  }
 })
 
 // testing auth ==================
-
-const isLogged = (req,res,next)=>{
-
-  req.logged = false
-  const {acces_token} = req.cookies
-  if (acces_token === 'logged') req.logged = true
-
-  next()
-}
 
 router.get('/test',isLogged,(req,res)=>{
 
