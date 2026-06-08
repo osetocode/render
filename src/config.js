@@ -16,3 +16,4 @@ export const DOMAIN = process.env.DOMAIN
 export const SUPABASE_URL = process.env.SUPABASE_URL
 export const SUPABASE_KEY = process.env.SUPABASE_KEY
 export const ENVIRONMENT = process.env.ENVIRONMENT || 'production'
+export const USER_KEY_ADMIN = process.env.USER_KEY_ADMIN

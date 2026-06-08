@@ -4,11 +4,14 @@ import path from 'path'
 
 const router = Router()
 
+// MIDDLEWHERE =====================
+
+// PAGES ===========================
+
 // sitios estaticos
 router.use(express.static(path.join(root,'static')))
 
 // paginas
-
 const linksDirectory = {
   "getN": "https://oseto.onrender.com/api/notes",
   "postN": "https://oseto.onrender.com/api/note",
@@ -31,6 +34,5 @@ router.get('/favicon.ico',(req,res)=>{
 router.use('/', (req, res) => {
   res.status(400).send('Ruta no encontrada')
 })
-
 
 export default router

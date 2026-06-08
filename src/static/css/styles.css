@@ -46,6 +46,12 @@ a{
 
 /* NAV ========================================= */
 
+.container__nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 nav{
   text-align: center;
   color: white;
@@ -55,6 +61,16 @@ nav{
 nav a{
   color: white;
   text-decoration: none;
+}
+
+nav .btnLogIn i{
+  font-size: 35px;
+  pointer-events: none;
+}
+
+nav .btnLogOut{
+  border: 2px solid white;
+  padding: 10px 15px;
 }
 /* MAIN ========================================= */
 

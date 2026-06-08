@@ -1,36 +1,26 @@
 <%- include('partials/head-open', {title : "test" }) %>
-  <!-- CSS -->
+  <!-- CSS: STYLES-->
   <link rel="stylesheet" href="css/styles.css">
+  <!-- CSS: ICONS - BS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
 
-  <%- include('partials/nav') %>
+  <%- include('partials/navTest') %>
 
   <main>
 
     <button>Haz click</button>
 
+    <% if (typeof logged !=='undefined' ) { %>
+      <!-- TODO ESTO ESTÁ OCULTO PARA LOS USUARIOS SIN AUTORIZACIÓN -->
+      <h1>ocutlto</h1>
+    <% } %>
+
   </main>
 
   <%- include('partials/footer')  %>
 
-  <script type="module">
-    import {modalConfirm , inputModal} from './js/modal.js'
-    import {toast} from './js/toast.js'
-
-    const button = document.querySelector('button')
-
-    button.addEventListener('click',async ()=>{
-
-      const res = await inputModal()
-
-      if(res === null) return console.log('devolvio null')
-
-      console.log(res)
-
-    })
-
-
-  </script>
+  <script src="./js/test.js" type="module"></script>
 </body>
 </html>
