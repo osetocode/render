@@ -75,7 +75,7 @@ router.post('/login',(req,res)=>{
   return res
     .cookie('acces_token', 'logged',{
       httpOnly: true,
-      maxAge: 5 * 60 * 1000
+      maxAge: 5 * 60 * 60 * 1000
     })
     .send('estas autorizado')
 

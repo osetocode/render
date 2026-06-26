@@ -9,8 +9,13 @@
   <%- include('partials/nav') %>
 
   <main>
+    
+    <div id="buttons">
+      <button>confirm</button>
+      <button>input</button>
+      <button>login</button>
+    </div>
 
-    <button>Haz click</button>
 
     <% if (typeof logged !=='undefined' ) { %>
       <!-- TODO ESTO ESTÁ OCULTO PARA LOS USUARIOS SIN AUTORIZACIÓN -->
@@ -18,6 +23,14 @@
     <% } %>
 
   </main>
+
+  <div class="modal-container show">
+    <div class="modal">
+      <form action="">
+        <input type="password" name="xd" placeholder="Insert password" id="inputPassword">
+      </form>
+    </div>
+  </div>
 
   <%- include('partials/footer')  %>
 

@@ -19,7 +19,7 @@ function el(tag, styles, content) {
 
 // FUNCIONES A EXPORTAR ================
 
-export function modalConfirm(question) {
+export function modalConfirm(question = '¿Desea Continuar?') {
 
   modalContainer.classList.add('show')
 
@@ -110,4 +110,18 @@ export function inputModal(text = undefined) {
     }
 
   })
+}
+
+export function loginModal(){
+  modalContainer.classList.add('show')
+
+  const ele = el('div', 'modal')
+
+  ele.innerHTML = `
+  <p>Log In</p>
+  <input type="password">
+  <button>No</button>
+  `
+
+  modalContainer.replaceChildren(ele)
 }

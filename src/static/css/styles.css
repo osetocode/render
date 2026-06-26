@@ -34,16 +34,15 @@ button:active{
   opacity: 0.7;
 }
 
+a{
+  text-decoration: none;
+}
+
 .container{
   width: 90%;
   margin: auto;
   max-width: 1400px;
 }
-
-a{
-  text-decoration: none;
-}
-
 /* NAV ========================================= */
 
 .container__nav{
